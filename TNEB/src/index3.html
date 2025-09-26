@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File a Complaint</title>
+  <link rel="stylesheet" href="filecomplaintstyle.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <h1>TNEB Portal</h1>
+        </div>
+        <div class="header-right">
+            <span><i class="fa-solid fa-phone-volume"></i>  94987 94987</span>
+            <i class="fa-solid fa-bell" onclick="location.href='index.html'"></i>
+            <i class="fa-solid fa-user" onclick="location.href='adminlogin.html'"></i>
+            <i class="fa-solid fa-right-from-bracket" onclick="location.href='index.html'"></i>
+        </div>
+    </header>
+    <div class="button" onclick="location.href='index.html'">
+        <button type="submit" class="back-button">← Back</button>
+    </div>
+  <div class="container">
+    <h1>File a Complaint</h1>
+    <form id="dataForm">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+      <label for="address">Address</label>
+      <textarea id="address" name="address" rows="2" placeholder="Enter your address" required></textarea>
+
+      <label for="complaintType">Complaint Type</label>
+      <select id="complaintType" name="complaintType" required>
+        <option value="" disabled selected>Select Complaint Type</option>
+        <option value="road">Road Issue</option>
+        <option value="water">Water Supply</option>
+        <option value="electricity">Electricity Issue</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="complaintDetails">Complaint Details</label>
+      <textarea id="complaintDetails" name="complaintDetails" rows="4" placeholder="Describe your complaint..." required></textarea>
+      <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+  
+  <div id="successMessage" class="hidden">
+    <p>Message sent successfully!</p>
+    <button onclick="goToNewPage()">View Complaint Details</button>
+    </div>
+  </div>
+
+  <script>
+    let formData = {};
+
+    function submitForm() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const complaintType = document.getElementById('complaintType').value.trim();
+      const complaintDetails = document.getElementById('complaintDetails').value.trim();
+
+      if (!name || !email || !phone || !address || !complaintType || !complaintDetails) {
+        alert("Please fill all fields.");
+        return;
+      }
+    
+
+      // Save form data
+      formData = { name, email, phone, address, complaintType, complaintDetails };
+
+      // Show success message and new button
+      document.getElementById('dataForm').style.display = 'none';
+      document.getElementById('successMessage').classList.remove('hidden');
+    }
+
+    function goToNewPage() {
+      const queryParams = new URLSearchParams(formData).toString();
+      window.location.href = `newpage.html?${queryParams}`;
+    }
+  </script>
+
+</body>
+</html>

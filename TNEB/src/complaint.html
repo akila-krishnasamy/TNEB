@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Progress Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .progress-container {
+            margin-top: 20px;
+        }
+        .progress-bar {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        .progress-bar-fill {
+            height: 20px;
+            width: 0%; /* Dynamically updated */
+            background-color: #4CAF50;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+            font-weight: bold;
+        }
+        .status {
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Complaint Progress Tracker</h2>
+    <form id="progressForm">
+        <div class="form-group">
+            <label for="complaintId">Enter Complaint ID:</label>
+            <input type="text" id="complaintId" name="complaintId" placeholder="e.g., 101" required>
+        </div>
+        <button type="submit" class="btn">Track Progress</button>
+    </form>
+
+    <div class="progress-container" id="progressContainer" style="display: none;">
+        <div class="progress-bar">
+            <div class="progress-bar-fill" id="progressBarFill">0%</div>
+        </div>
+        <div class="status" id="statusText">Status: Pending</div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('progressForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const complaintId = document.getElementById('complaintId').value;
+
+        // Simulated backend request (Replace with actual AJAX call to your API)
+        fetchComplaintProgress(complaintId);
+    });
+
+    function fetchComplaintProgress(complaintId) {
+        // Replace this with your actual backend API call using fetch() or AJAX
+        // Example of a simulated API response
+        const simulatedResponse = {
+            complaint_id: complaintId,
+            progress: 65, // Example progress (replace with real data)
+            status: "In Progress" // Example status (replace with real data)
+        };
+
+        // Update UI based on the response
+        updateProgressUI(simulatedResponse.progress, simulatedResponse.status);
+    }
+
+    function updateProgressUI(progress, status) {
+        document.getElementById('progressContainer').style.display = 'block';
+
+        const progressBarFill = document.getElementById('progressBarFill');
+        const statusText = document.getElementById('statusText');
+
+        // Update progress bar
+        progressBarFill.style.width = progress + '%';
+        progressBarFill.textContent = progress + '%';
+
+        // Update status text
+        statusText.textContent = `Status: ${status}`;
+    }
+</script>
+
+</body>
+</html>

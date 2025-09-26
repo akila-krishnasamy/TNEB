@@ -1,0 +1,107 @@
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Navigation */
+.navbar {
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+/* Hero Section */
+.hero {
+    background-color: #1976d2;
+    padding: 4rem 0;
+}
+
+/* Services Section */
+.service-card {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    height: 100%;
+    transition: transform 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-card h3 {
+    color: #1976d2;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.service-card p {
+    margin-bottom: 1.5rem;
+    color: #666;
+}
+
+/* Shutdown Info */
+.shutdown-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    height: 100%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.shutdown-card h3 {
+    color: #1976d2;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+/* Customer Service */
+.customer-service h3 {
+    color: #1976d2;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.customer-service a {
+    color: #1976d2;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.customer-service a:hover {
+    color: #1565c0;
+}
+
+/* Footer */
+footer {
+    border-top: 1px solid #eee;
+}
+
+.social-links a {
+    color: #1976d2;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #1565c0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero {
+        padding: 3rem 0;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .service-card {
+        margin-bottom: 1rem;
+    }
+}
